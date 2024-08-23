@@ -1,0 +1,66 @@
+21:14:57 **** Incremental Build of configuration Debug for project CMSIS_Ass2 ****
+make -r -j8 all 
+Building file: ../startup/startup_mke16z4.c
+Building file: ../source/hal/src/hal.c
+Building file: ../source/driver/src/driver.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../startup/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"startup/startup_mke16z4.d" -MT"startup/startup_mke16z4.o" -MT"startup/startup_mke16z4.d" -o "startup/startup_mke16z4.o" "../startup/startup_mke16z4.c"
+Building file: ../source/app/src/app.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/hal/src/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/hal/src/hal.d" -MT"source/hal/src/hal.o" -MT"source/hal/src/hal.d" -o "source/hal/src/hal.o" "../source/hal/src/hal.c"
+Building file: ../source/main.c
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/driver/src/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/driver/src/driver.d" -MT"source/driver/src/driver.o" -MT"source/driver/src/driver.d" -o "source/driver/src/driver.o" "../source/driver/src/driver.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/app/src/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/app/src/app.d" -MT"source/app/src/app.o" -MT"source/app/src/app.d" -o "source/app/src/app.o" "../source/app/src/app.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/main.d" -MT"source/main.o" -MT"source/main.d" -o "source/main.o" "../source/main.c"
+Building file: ../source/mtb.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/mtb.d" -MT"source/mtb.o" -MT"source/mtb.d" -o "source/mtb.o" "../source/mtb.c"
+Building file: ../device/system_MKE16Z4.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\app" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\driver" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\source\hal" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\CMSIS_Ass2\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../device/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"device/system_MKE16Z4.d" -MT"device/system_MKE16Z4.o" -MT"device/system_MKE16Z4.d" -o "device/system_MKE16Z4.o" "../device/system_MKE16Z4.c"
+../source/driver/src/driver.c: In function 'PWM':
+../source/driver/src/driver.c:28:5: warning: implicit declaration of function 'delay' [-Wimplicit-function-declaration]
+   28 |     delay(onTime);
+      |     ^~~~~
+../source/hal/src/hal.c: In function 'Mode1':
+../source/hal/src/hal.c:22:9: warning: implicit declaration of function 'PWM'; did you mean 'PWT'? [-Wimplicit-function-declaration]
+   22 |         PWM(dutyCycle);
+      |         ^~~
+      |         PWT
+../source/hal/src/hal.c: In function 'Mode2':
+../source/hal/src/hal.c:37:9: warning: implicit declaration of function 'delay500ms' [-Wimplicit-function-declaration]
+   37 |         delay500ms();
+      |         ^~~~~~~~~~
+Finished building: ../source/mtb.c
+Finished building: ../startup/startup_mke16z4.c
+Finished building: ../source/main.c
+Finished building: ../source/hal/src/hal.c
+Finished building: ../source/driver/src/driver.c
+Finished building: ../source/app/src/app.c
+Finished building: ../device/system_MKE16Z4.c
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Building target: CMSIS_Ass2.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="CMSIS_Ass2.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T CMSIS_Ass2_Debug.ld -o "CMSIS_Ass2.axf" ./startup/startup_mke16z4.o  ./source/hal/src/hal.o  ./source/driver/src/driver.o  ./source/app/src/app.o  ./source/main.o ./source/mtb.o  ./device/system_MKE16Z4.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:        3100 B        64 KB      4.73%
+            SRAM:        1336 B         8 KB     16.31%
+Finished building target: CMSIS_Ass2.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "CMSIS_Ass2.axf"; # arm-none-eabi-objcopy -v -O binary "CMSIS_Ass2.axf" "CMSIS_Ass2.bin" ; # checksum -p MKE16Z64xxx4 -d "CMSIS_Ass2.bin";
+   text	   data	    bss	    dec	    hex	filename
+   3100	      0	   1336	   4436	   1154	CMSIS_Ass2.axf
+ 
+
+21:14:59 Build Finished. 0 errors, 3 warnings. (took 2s.581ms)
+

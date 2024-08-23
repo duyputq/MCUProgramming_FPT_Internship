@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;MKE16Z4_Project&apos; to &apos;Demo_Button&apos;" description="Rename resource &apos;MKE16Z4_Project&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/MKE16Z4_Project" name="Demo_Button" stamp="1723536592859" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;CMSIS_Ass2&apos; to &apos;Ass2_CMSIS&apos;" description="Rename resource &apos;CMSIS_Ass2&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/CMSIS_Ass2" name="Ass2_CMSIS" stamp="1723595413476" updateReferences="true"/>
+</session>

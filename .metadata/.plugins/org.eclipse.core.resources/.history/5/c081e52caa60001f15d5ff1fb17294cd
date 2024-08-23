@@ -1,0 +1,7 @@
+#include <MKE16Z4.h>
+#include <stdio.h>
+
+int main(void){
+
+	return 0;
+}

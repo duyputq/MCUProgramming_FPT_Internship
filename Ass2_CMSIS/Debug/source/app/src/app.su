@@ -1,0 +1,2 @@
+../source/app/src/app.c:14:6:delay	24	static
+../source/app/src/app.c:23:6:delay500ms	16	static

@@ -1,0 +1,40 @@
+#include <MKE16Z4.h>
+#include <stdio.h>
+
+#define SystemCoreClock 48000000
+#define BaudRate_UART 9600
+
+void initUART0(){
+	//cau hinh xung
+	PCC->CLKCFG[PCC_PORTB_INDEX] |= PCC_CLKCFG_CGC(1);
+	PORTB->PCR[0] |= PORT_PCR_MUX(2);
+	PORTB->PCR[1] |= PORT_PCR_MUX(2);
+
+	//cau hinh xung cho uart
+	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(3);
+	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(1);
+	SCG->FIRCDIV |= SCG_FIRCDIV_FIRCDIV2(1);
+
+	//cau hinh UART
+	LPUART0->CTRL &= ~(1<<19 | 1<< 18);
+	LPUART0->CTRL &= ~(1<<4);
+	LPUART0->CTRL &= ~(1<<29);
+	LPUART0->CTRL &= ~(1<<13);
+
+	//cau hinh BAUD
+	LPUART0->BAUD |= 1<<17;
+	LPUART0->BAUD &= ~(0b1011 << 24);
+	LPUART0->BAUD = (LPUART0->BAUD &~(1<<2)) |
+			LPUART_BAUD_SBR(SystemCoreClock / (BaudRate_UART * 5));
+
+	//Enable Receiver  Interrupt
+	LPUART0->CTRL |= 1<<21;
+	NVIC_EnableIRQ(LPUART0_IRQn);
+
+	LPUART0->CTRL |= (1<<19 | 1<<18);
+}
+
+int main(void){
+	initUART0();
+	return 0;
+}

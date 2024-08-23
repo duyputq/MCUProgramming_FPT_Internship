@@ -1,0 +1,38 @@
+11:42:20 **** Build of configuration Debug for project Demo_Button ****
+make -r -j8 all 
+Building file: ../startup/startup_mke16z4.c
+Building file: ../source/Demo_Button.c
+Building file: ../source/mtb.c
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../startup/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"startup/startup_mke16z4.d" -MT"startup/startup_mke16z4.o" -MT"startup/startup_mke16z4.d" -o "startup/startup_mke16z4.o" "../startup/startup_mke16z4.c"
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Demo_Button.d" -MT"source/Demo_Button.o" -MT"source/Demo_Button.d" -o "source/Demo_Button.o" "../source/Demo_Button.c"
+Invoking: MCU C Compiler
+Building file: ../device/system_MKE16Z4.c
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/mtb.d" -MT"source/mtb.o" -MT"source/mtb.d" -o "source/mtb.o" "../source/mtb.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Button\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../device/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"device/system_MKE16Z4.d" -MT"device/system_MKE16Z4.o" -MT"device/system_MKE16Z4.d" -o "device/system_MKE16Z4.o" "../device/system_MKE16Z4.c"
+Finished building: ../source/mtb.c
+Finished building: ../startup/startup_mke16z4.c
+ 
+Finished building: ../source/Demo_Button.c
+Finished building: ../device/system_MKE16Z4.c
+ 
+ 
+ 
+Building target: Demo_Button.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Demo_Button.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Demo_Button_Debug.ld -o "Demo_Button.axf" ./startup/startup_mke16z4.o  ./source/Demo_Button.o ./source/mtb.o  ./device/system_MKE16Z4.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:        2784 B        64 KB      4.25%
+            SRAM:        1336 B         8 KB     16.31%
+Finished building target: Demo_Button.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Demo_Button.axf"; # arm-none-eabi-objcopy -v -O binary "Demo_Button.axf" "Demo_Button.bin" ; # checksum -p MKE16Z64xxx4 -d "Demo_Button.bin";
+   text	   data	    bss	    dec	    hex	filename
+   2784	      0	   1336	   4120	   1018	Demo_Button.axf
+ 
+
+11:42:22 Build Finished. 0 errors, 0 warnings. (took 2s.227ms)
+

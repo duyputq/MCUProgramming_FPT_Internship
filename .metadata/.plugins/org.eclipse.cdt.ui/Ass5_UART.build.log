@@ -1,0 +1,23 @@
+23:52:17 **** Incremental Build of configuration Debug for project Ass5_UART ****
+make -r -j8 all 
+Building file: ../source/Ass5_UART.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass5_UART\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass5_UART\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass5_UART\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Ass5_UART.d" -MT"source/Ass5_UART.o" -MT"source/Ass5_UART.d" -o "source/Ass5_UART.o" "../source/Ass5_UART.c"
+Finished building: ../source/Ass5_UART.c
+ 
+Building target: Ass5_UART.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Ass5_UART.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Ass5_UART_Debug.ld -o "Ass5_UART.axf" ./startup/startup_mke16z4.o  ./source/Ass5_UART.o ./source/mtb.o  ./device/system_MKE16Z4.o   
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:        4128 B        64 KB      6.30%
+            SRAM:        1448 B         8 KB     17.68%
+Finished building target: Ass5_UART.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Ass5_UART.axf"; # arm-none-eabi-objcopy -v -O binary "Ass5_UART.axf" "Ass5_UART.bin" ; # checksum -p MKE16Z64xxx4 -d "Ass5_UART.bin";
+   text	   data	    bss	    dec	    hex	filename
+   4128	      0	   1448	   5576	   15c8	Ass5_UART.axf
+ 
+
+23:52:19 Build Finished. 0 errors, 0 warnings. (took 1s.392ms)
+

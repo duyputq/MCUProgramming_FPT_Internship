@@ -1,0 +1,2 @@
+../source/driver/src/driver.c:14:6:initLed	8	static
+../source/driver/src/driver.c:22:6:PWM	24	static

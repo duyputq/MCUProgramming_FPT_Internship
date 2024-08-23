@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="SCG_FIRCDIV"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="PCC_LPUART0_INDEX"/>
+			<item value="SCG_FIRCDIV"/>
+			<item value="SCG_FIR"/>
+			<item value="SCG"/>
+			<item value="Red"/>
+			<item value="VALID_STRING"/>
+			<item value="HELLO_STRING"/>
+			<item value="void LPUART0_IRQHandler(void) {"/>
+			<item value="receive"/>
+			<item value="STAT"/>
+			<item value="struct PCC"/>
+			<item value="PCC"/>
+			<item value="PCC_CLKCFG_CGC_SHIFT"/>
+			<item value="PCC_CLKCFG_PR_SHIFT"/>
+			<item value="PCC_CLKCFG_CGC_MASK"/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1189"/>
+		<item key="DIALOG_Y_ORIGIN" value="170"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="448"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

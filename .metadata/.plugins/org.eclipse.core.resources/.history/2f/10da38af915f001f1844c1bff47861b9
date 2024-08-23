@@ -1,0 +1,17 @@
+#include <MKE16Z4.h>
+
+void init_led(){
+
+
+}
+
+int main (void){
+
+	init_led();
+
+	while(1){
+
+	}
+
+	return 0;
+}

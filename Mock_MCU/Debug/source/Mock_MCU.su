@@ -1,0 +1,3 @@
+C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\CMSIS/core_cm0plus.h:741:22:__NVIC_EnableIRQ	16	static
+../source/Mock_MCU.c:7:6:initUART0	8	static
+../source/Mock_MCU.c:37:5:main	8	static

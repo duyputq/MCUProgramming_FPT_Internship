@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE infoList
+  SYSTEM "crt_infolist.dtd">
+<infoList vendor="NXP">
+   <info name="MKE16Z64xxx4" chip="MKE16Z64xxx4">
+      <chip>
+         <name>MKE16Z64xxx4</name>
+         <family>KE1x</family>
+         <vendor>NXP</vendor>
+         <memory id="Flash"
+                 type="Flash"
+                 size="64"
+                 is_ro="true"
+                 can_program="true"/>
+         <memory id="RAM" type="RAM" size="8"/>
+         <memoryInstance id="PROGRAM_FLASH"
+                         derived_from="Flash"
+                         location="0x00000000"
+                         size="0x00010000"
+                         driver="FTFA_1K.cfx"/>
+         <memoryInstance id="SRAM"
+                         derived_from="RAM"
+                         location="0x1ffff800"
+                         size="0x00002000"/>
+      </chip>
+      <processor>
+         <name gcc_name="cortex-m0plus">Cortex-M0+</name>
+         <family>Cortex-M</family>
+      </processor>
+   </info>
+</infoList>

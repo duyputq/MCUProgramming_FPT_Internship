@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chips chipVendor="NXP"
+       family="KE1x"
+       vendorURL="http://www.nxp.com"
+       chipURL="">
+   <chip name="MKE16Z64xxx4"
+         displayName="MKE16Z64xxx4"
+         xml_file="MKE16Z4_internal.xml"
+         chipURL=""/>
+</chips>

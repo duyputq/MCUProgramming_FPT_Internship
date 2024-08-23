@@ -1,0 +1,19 @@
+#include <MKE16Z4.h>
+
+void Erase_Sector(uint32_t Address){
+	//Erae all bytes in a program flash sector
+	FTFA->FCCOB0 = 0x09; //command erase
+	FTFA->FCCOB1 = (Address>>16) & 0xFF; //lay duoc
+	FTFA->FCCOB2 = (Address>>8) & 0xFF;
+	FTFA->FCCOB3 = (Address>>0) & 0xFF;
+}
+
+void Program_LongWord(uint32_t Address, uint8_t *Data){
+
+}
+
+int main()
+{
+
+	return 0;
+}

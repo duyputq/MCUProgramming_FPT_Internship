@@ -1,0 +1,22 @@
+19:08:37 **** Incremental Build of configuration Debug for project Flash_test ****
+make -r -j8 all 
+Building file: ../source/Flash_test.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Flash_test\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Flash_test\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Flash_test\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Flash_test.d" -MT"source/Flash_test.o" -MT"source/Flash_test.d" -o "source/Flash_test.o" "../source/Flash_test.c"
+Finished building: ../source/Flash_test.c
+ 
+Building target: Flash_test.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Flash_test.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Flash_test_Debug.ld -o "Flash_test.axf" ./startup/startup_mke16z4.o  ./source/Flash_test.o ./source/mtb.o  ./device/system_MKE16Z4.o   
+C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/bin/ld.exe: C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libcr_nohost_nf.a(_cr__main.o): in function `__main':
+/opt/jenkins/workspace/Libraries_RedEye/Redlib/redlib_stub_nohost/nf_armv6-m/../src/_cr__main.c:69:(.text.__main+0x6): undefined reference to `main'
+Memory region         Used Size  Region Size  %age Used
+   PROGRAM_FLASH:        2524 B        64 KB      3.85%
+            SRAM:        1336 B         8 KB     16.31%
+collect2.exe: error: ld returned 1 exit status
+make[1]: *** [makefile:46: Flash_test.axf] Error 1
+make: *** [makefile:37: all] Error 2
+"make -r -j8 all" terminated with exit code 2. Build might be incomplete.
+
+19:08:37 Build Failed. 3 errors, 0 warnings. (took 453ms)
+

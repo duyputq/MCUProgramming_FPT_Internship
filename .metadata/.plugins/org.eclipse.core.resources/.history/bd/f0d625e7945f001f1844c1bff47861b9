@@ -1,0 +1,18 @@
+#include <MKE16Z4.h>
+
+void init_led(){
+	PCC->CLKCFG(PCC_PORTB_INDEX) |= PCC_CLKCFG_GCC(1);
+
+
+}
+
+int main (void){
+
+	init_led();
+
+	while(1){
+
+	}
+
+	return 0;
+}

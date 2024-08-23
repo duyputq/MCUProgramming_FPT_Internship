@@ -1,0 +1,121 @@
+#include <stdint.h>
+#include <MKE16Z4.h>
+#define GREEN_LED_PIN        (1 << 4)
+#define BUTTON_PIN           (1 << 2)
+#define DURATION             100
+#define PWM_DURATION         2000
+#define GRADUAL_DURATION     20
+
+#define STATE_1         1
+#define STATE_2         2
+#define STATE_3         3
+#define STATE_4         4
+
+uint8_t state = STATE_4;
+uint32_t button_count = 0;
+uint32_t systick_counter = 0;
+uint32_t duty_cycle = 0;
+uint8_t direction = 1;
+
+void SysTick_Handler(void) {
+    systick_counter++;
+    duty_cycle++;
+
+    switch(button_count % 4) {
+        case 0:
+            state = STATE_1;
+            break;
+        case 1:
+            state = STATE_2;
+            break;
+        case 2:
+            state = STATE_3;
+            break;
+        case 3:
+        default:
+            state = STATE_4;
+            break;
+    }
+
+    switch(state) {
+        case STATE_1:
+            FGPIOB->PDOR &= ~GREEN_LED_PIN;
+            break;
+        case STATE_2:
+            initBlink();
+            break;
+        case STATE_3:
+            initPWM();
+            break;
+        case STATE_4:
+        default:
+            FGPIOB->PDOR |= GREEN_LED_PIN;
+            break;
+    }
+}
+
+void PORTBCD_IRQHandler(void) {
+    if (PORTD->PCR[2] & (1 << 24)) {
+        button_count++;
+        direction = 1;
+        duty_cycle = 0;
+        PORTD->PCR[2] |= (1 << 24);
+    }
+}
+
+void initButton(void) {
+    PCC->CLKCFG[PCC_PORTD_INDEX] |= PCC_CLKCFG_CGC(1);
+    PORTD->PCR[2] = PORT_PCR_MUX(1) | PORT_PCR_IRQC(0xA);
+    GPIOD->PDDR &= ~BUTTON_PIN;
+    __NVIC_EnableIRQ(PORTBCD_IRQn);
+}
+
+void initLed(void) {
+
+    PCC->CLKCFG[PCC_PORTB_INDEX] |= PCC_CLKCFG_CGC(1); //cau hinh clock cho PORTB
+    PORTB->PCR[4] = PORT_PCR_MUX(1); // cau hinh thanh ghi cho PORTB
+
+    FGPIOB->PDDR |= GREEN_LED_PIN;
+
+    FGPIOB->PDOR |= GREEN_LED_PIN;
+}
+
+void initLed2(void){
+	PCC->CLKCFG[PCC_PORTB_INDEX] |= PCC_CLKCFG_CGC(1);
+
+}
+
+void initSysTick(void) {
+    SysTick_Config(48000);
+}
+
+void initBlink(void) {
+    if ((systick_counter % (2 * DURATION)) < DURATION) {
+        FGPIOB->PTOR |= GREEN_LED_PIN;
+    }
+}
+
+void initPWM(void) {
+    if (duty_cycle >= PWM_DURATION) {
+        duty_cycle = 0;
+        direction = !direction;
+    }
+    uint32_t pwm_Time = direction
+        ? (duty_cycle * GRADUAL_DURATION) / PWM_DURATION
+        : GRADUAL_DURATION - (duty_cycle * GRADUAL_DURATION) / PWM_DURATION;
+
+    if (pwm_Time > (systick_counter % GRADUAL_DURATION)) {
+        FGPIOB->PDOR &= ~GREEN_LED_PIN;
+    } else {
+        FGPIOB->PDOR |= GREEN_LED_PIN;
+    }
+}
+
+int main(void) {
+    initLed();
+    initButton();
+    initSysTick();
+
+    while (1) {
+    }
+}

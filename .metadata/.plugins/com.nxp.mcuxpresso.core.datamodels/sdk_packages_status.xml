@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdk-packages>
+<package hash="1722558422572" path="C:\Users\Duy\mcuxpresso\02\SDKPackages\com.nxp.mcuxpresso.sdk.sdk_2.x_frdm-ke16z_p2site_2.16.0.20191125144615230113279351365927.zip" schema="manifest-schema/sdk_manifest_v3.14.xsd"/>
+<package hash="1719979800000" path="C:\nxp\MCUXpressoIDE_11.10.0_3148\ide\plugins\com.nxp.mcuxpresso.core.datamodels.resources_11.10.0.202311280810\fragments" schema="manifest-schema/sdk_manifest_v3.3.xsd"/>
+<package hash="1719979800000" path="C:\nxp\MCUXpressoIDE_11.10.0_3148\ide\plugins\com.nxp.mcuxpresso.core.datamodels.resources_11.10.0.202311280810\override" schema="manifest-schema/sdk_manifest_v3.3.xsd"/>
+</sdk-packages>

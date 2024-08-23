@@ -1,0 +1,25 @@
+#include <MKE16Z4.h>
+
+void init_led(){
+	PCC->CLKCFG(PCC_PORTB_INDEX) |= PCC_CLKCFG_GCC(1);
+
+	PORTB->PCR[4] |= PORT_PCR_MUX(1);
+	PORTB->PCR[5] |= PORT_PCR_MUX(1);
+
+	FGPIOB->PDDR |= GREEN_LED_PIN | RED_LED_PIN;
+
+	FGPIOB->PDOR &= ~RED_LED_PIN;
+	FGPIOB->PDDR |= GREEN_LED_PIN;
+
+}
+
+int main (void){
+
+	init_led();
+
+	while(1){
+
+	}
+
+	return 0;
+}

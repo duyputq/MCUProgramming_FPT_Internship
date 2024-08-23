@@ -1,0 +1,52 @@
+#include <MKE16Z4.h>
+
+void Erase_Sector(uint32_t Address){
+
+	while (FTFA->FSTAT = 0x00);
+
+	if(FTFA->FSTAT != 0x80){
+		FTFA->FSTAT = 0X30; //clear 2 error flag
+	}
+
+
+	//Erae all bytes in a program flash sector
+	FTFA->FCCOB0 = 0x06; //command erase
+	FTFA->FCCOB1 = (Address>>16) & 0xFF; //lay duoc
+	FTFA->FCCOB2 = (Address>>8) & 0xFF;
+	FTFA->FCCOB3 = (Address>>0) & 0xFF;
+
+	FTFA->FCCOB4 = Data[0];
+	FTFA->FCCOB5 = Data[1];
+	FTFA->FCCOB6 = Data[2];
+	FTFA->FCCOB7 = Data[3];
+
+
+	//run command
+	FTFA->FSTAT = 0x80;
+
+	//wait command finish
+	while(FTFA->FSTAT == 0X00);
+
+}
+
+uint32_t Read_Flash_Address(uint32_t Address)
+{
+	return *(volatile uint32_t *)Address;
+}
+
+void Program_LongWord(uint32_t Address, uint8_t *Data){
+
+}
+
+int main()
+{
+	uint8_t data[4] = {0x01, 0x02, 0x03, 0x04};
+
+	Program_Longword(0xA000,data); //chen data vao dia chi 0xA0000
+
+	Read_Flash_Address(0xA000);
+
+	Erase_Sector(0xA000);	// xoa erase
+
+	return 0;
+}
