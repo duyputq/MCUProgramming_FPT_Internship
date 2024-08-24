@@ -1,0 +1,24 @@
+/*
+ * checkError.h
+ *
+ *  Created on: Aug 24, 2024
+ *      Author: Duy
+ */
+
+#ifndef CHECKERROR_H_
+#define CHECKERROR_H_
+
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+void get_substring(const char* src, char* dest, uint8_t start, uint8_t length);
+void get_address(const char* src, char* dest);
+
+uint8_t check_record_start(char* src);
+uint8_t check_S(char* src);
+uint8_t check_byte_count(char* src);
+uint8_t check_hexa(char* src);
+uint8_t check_sum(const char* src);
+
+#endif /* CHECKERROR_H_ */

@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../source/Mock_MCU.c \
+../source/checkError.c \
 ../source/mtb.c 
 
 C_DEPS += \
 ./source/Mock_MCU.d \
+./source/checkError.d \
 ./source/mtb.d 
 
 OBJS += \
 ./source/Mock_MCU.o \
+./source/checkError.o \
 ./source/mtb.o 
 
 
@@ -28,7 +31,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/Mock_MCU.d ./source/Mock_MCU.o ./source/mtb.d ./source/mtb.o
+	-$(RM) ./source/Mock_MCU.d ./source/Mock_MCU.o ./source/checkError.d ./source/checkError.o ./source/mtb.d ./source/mtb.o
 
 .PHONY: clean-source
 

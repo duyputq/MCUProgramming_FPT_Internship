@@ -1,6 +1,7 @@
 #include <MKE16Z4.h>
 #include <stdio.h>
 #include <stdint.h>
+#include "checkError.h"
 
 #define SystemCoreClock 48000000
 #define BaudRate_UART 9600
@@ -13,51 +14,6 @@ uint8_t element_index = 0;
 uint8_t pop_index = 0;
 uint8_t queue_element = 0;
 uint8_t error_check = 0;
-
-
-//viet ham push queue
-void clear(uint8_t index){
-	uint8_t j = 0;
-	while(queue[index][j] != '\0'){
-		queue[index][j] = '\0';
-		j++;
-	}
-}
-
-//push_index la hang ma se day data vao
-void push_queue(char data){
-	//neu moi hang rong con lai se + vao push index
-	if(data == '\0'){
-		push_index++;
-		queue_element++;
-
-		//neu hang 4 thi se reset lai hang dau
-		if(push_index == 4){
-			push_index = 0;
-		}
-
-		element_index =0;
-	} else {
-		queue[push_index][element_index] = data;
-		element_index++;
-	}
-}
-
-void handle_queue(uint8_t* line){
-	//check error
-}
-
-void pop_queue(){
-	if(queue_element > 0){
-		//handle_queue(queue[pop_index]);
-		queue_element--;
-		clear(pop_index);
-		pop_index++;
-		if(pop_index == 4){
-			pop_index = 0;
-		}
-	}
-}
 
 void initUART0(){
 	//cau hinh xung
@@ -104,15 +60,132 @@ void send_data(const char *str) {
 	}
 }
 
+/***XU LY QUEUE ***/
+
+//viet ham push queue
+void clear(uint8_t index){
+	uint8_t j = 0;
+	while(queue[index][j] != '\0'){
+		queue[index][j] = '\0';
+		j++;
+	}
+}
+
+//push_index la hang ma se day data vao
+void push_queue(char data){
+	//neu moi hang rong con lai se + vao push index
+	if(data == '\0'){
+		push_index++;
+		queue_element++;
+
+		//neu hang 4 thi se reset lai hang dau
+		if(push_index == 4){
+			push_index = 0;
+		}
+
+		element_index =0;
+	} else {
+		queue[push_index][element_index] = data;
+		element_index++;
+	}
+}
+
+//ham xu ly cac dong trong queue (cac ham import trong checkError.h)
+void handle_queue(uint8_t* src){
+	//check error
+	uint8_t exception;
+
+	if (check_S(src) == 0)
+	{
+		exception = 2;
+	}
+	else if (check_byte_count(src) == 0) {
+		exception = 3;
+	}
+	else if (check_hexa(src) == 0) {
+		exception = 4;
+	}
+//dang khong biet totalLine cua file
+//	else if (check_data_record(src, totalLine)==0) {
+//		exception = 5;
+//	}
+//	else if (check_line_count(src, totalLine)==0) {
+//		exception = 6;
+//	}
+//	else if (check_terminate(src, totalLine)==0) {
+//		exception = 7;
+//	}
+	else if (check_sum(src) == 0) {
+		exception = 8;
+	}
+	else {
+		exception = 0;
+	}
+
+	/*give priority to check record start*/
+//	if (i == 1) {
+//		if (check_record_start(src) == 0) {
+//			exception = 1;
+//			printf(output, "Wrong Start line \n");
+//		}
+//	}
+
+	/*Handle Exception*/
+	switch (exception)
+	{
+	case 1:
+		break;
+	case 2:
+		send_data("Wrong First Letter \n");
+		break;
+	case 3:
+		send_data("Wrong Byte count\n");
+		break;
+	case 4:
+		send_data("Wrong Format\n");
+		break;
+	case 5:
+		send_data("Wrong Data Record\n");
+		break;
+	case 6:
+		send_data("Wrong Line Count\n");
+		break;
+	case 7:
+		send_data("Wrong Terminate\n");
+		break;
+	case 8:
+		send_data("Wrong Checksum\n");
+		break;
+	default:
+		send_data("Normal");
+		break;
+	}
+}
+
+void pop_queue(){
+	if(queue_element > 0){
+		handle_queue(queue[pop_index]);
+		queue_element--;
+		clear(pop_index);
+		pop_index++;
+		if(pop_index == 4){
+			pop_index = 0;
+		}
+	}
+}
+
 //ham xy ly chinh
 void LPUART0_IRQHandler(){
 	char data = LPUART0->DATA & 0xFF;
 	if(data != '\0'){
 		push_queue(data);
 	}
-//viet tiep tai day
+	//trong pop queue co handle queue roi
+	pop_queue();
 
 
+	//viet tiep tai day(chua xu ly delay, cac loi khac,...)
+	//...
 }
 
 void delay()
