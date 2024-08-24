@@ -1,0 +1,4 @@
+../source/Demo_UART.c:5:6:init_UART	8	static
+../source/Demo_UART.c:43:6:send_character	16	static
+../source/Demo_UART.c:52:6:send_data	24	static
+../source/Demo_UART.c:62:5:main	32	static

@@ -83,7 +83,6 @@ void send_character(char character) {
 }
 
 // Function to send a string of characters over UART
-//hoi xem cai length nay co limit khong
 void send_data(const char *string, uint8_t length) {
     for (uint8_t index = 0; index < length; index++) {
         send_character(string[index]);

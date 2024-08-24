@@ -1,3 +1,11 @@
 C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\CMSIS/core_cm0plus.h:741:22:__NVIC_EnableIRQ	16	static
-../source/Mock_MCU.c:7:6:initUART0	8	static
-../source/Mock_MCU.c:37:5:main	8	static
+../source/Mock_MCU.c:19:6:clear	32	static
+../source/Mock_MCU.c:28:6:push_queue	16	static
+../source/Mock_MCU.c:46:6:handle_queue	16	static
+../source/Mock_MCU.c:50:6:pop_queue	8	static
+../source/Mock_MCU.c:62:6:initUART0	8	static
+../source/Mock_MCU.c:92:6:send_character	16	static
+../source/Mock_MCU.c:98:6:send_data	16	static
+../source/Mock_MCU.c:108:6:LPUART0_IRQHandler	16	static
+../source/Mock_MCU.c:122:6:delay	16	static
+../source/Mock_MCU.c:131:5:main	8	static

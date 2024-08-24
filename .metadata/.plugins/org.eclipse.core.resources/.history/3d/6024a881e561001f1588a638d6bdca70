@@ -1,0 +1,109 @@
+#include <MKE16Z4.h>
+#include <stdio.h>
+#include <stdint.h>
+
+#define SystemCoreClock 48000000
+#define BaudRate_UART 9600
+
+//global
+uint8_t queue[4][255];
+uint8_t push_index = 0;
+uint8_t element_index = 0;
+uint8_t pop_index = 0;
+uint8_t queue_element = 0;
+uint8_t error_check = 0;
+
+
+//viet ham push queue
+void clear(uint8_t index){
+	uint8_t j = 0;
+	while(queue[index][j] != '\0'){
+		queue[index][j] = '\0';
+		j++;
+	}
+}
+
+void push_queue(uint8_t data){
+	if(data == '\0'){
+		push_index++;
+		queue_element++;
+
+		if(push_index == 4){
+			push_index = 0;
+		}
+
+		element_index =0;
+	} else {
+		queue[push_index][element_index] = data;
+		element_index++;
+	}
+}
+
+void handle_queue(uint8_t* line){
+
+}
+
+void pop_queue(){
+	if(queue_element > 0){
+		parse_queue(queue[pop_index]);
+		queue_element--;
+		clear(pop_index);
+		pop_index++;
+		if(pop_index == 4){
+			pop_index = 0;
+		}
+	}
+}
+
+void initUART0(){
+	//cau hinh xung
+	PCC->CLKCFG[PCC_PORTB_INDEX] |= PCC_CLKCFG_CGC(1);
+	PORTB->PCR[0] |= PORT_PCR_MUX(2);
+	PORTB->PCR[1] |= PORT_PCR_MUX(2);
+
+	//cau hinh xung cho uart
+	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(3);
+	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(1);
+	SCG->FIRCDIV |= SCG_FIRCDIV_FIRCDIV2(1);
+
+	//cau hinh UART
+	LPUART0->CTRL &= ~(1<<19 | 1<< 18);
+	LPUART0->CTRL &= ~(1<<4);
+	LPUART0->CTRL &= ~(1<<29);
+	LPUART0->CTRL &= ~(1<<13);
+
+	//cau hinh BAUD
+	LPUART0->BAUD |= 1<<17;
+	LPUART0->BAUD &= ~(0b1011 << 24);
+	LPUART0->BAUD = (LPUART0->BAUD &~(1<<2)) |
+	LPUART_BAUD_SBR(SystemCoreClock / (BaudRate_UART * 5));
+
+	//Enable Receiver  Interrupt
+	LPUART0->CTRL |= 1<<21;
+
+	NVIC_EnableIRQ(LPUART0_IRQn);
+	LPUART0->CTRL |= (1<<19 | 1<<18);
+}
+
+void sendChar(uint8_t data){
+	while(!(LPUART0->STAT & LPUART_STAT_TDRE_MASK)){}
+	LPUART0->DATA = data;
+}
+
+void sendString(uint8_t *str){
+	while(*str != '\0'){
+		sendChar(*str++);
+	}
+}
+
+void LPUART0_IRQHandler(){
+	uint8_t data = 0;
+	uint8_t flag = 0;
+	data = LPUART0->DATA & 0xFF;
+
+}
+
+int main(void){
+	initUART0();
+	return 0;
+}

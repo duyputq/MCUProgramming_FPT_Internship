@@ -1,4 +1,4 @@
-00:36:28 **** Incremental Build of configuration Debug for project Mock_MCU ****
+14:57:27 **** Incremental Build of configuration Debug for project Mock_MCU ****
 make -r -j8 all 
 Building file: ../source/Mock_MCU.c
 Invoking: MCU C Compiler
@@ -9,15 +9,15 @@ Building target: Mock_MCU.axf
 Invoking: MCU Linker
 arm-none-eabi-gcc -nostdlib -Xlinker -Map="Mock_MCU.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Mock_MCU_Debug.ld -o "Mock_MCU.axf" ./startup/startup_mke16z4.o  ./source/Mock_MCU.o ./source/mtb.o  ./device/system_MKE16Z4.o   
 Memory region         Used Size  Region Size  %age Used
-   PROGRAM_FLASH:        2880 B        64 KB      4.39%
-            SRAM:        1336 B         8 KB     16.31%
+   PROGRAM_FLASH:        3164 B        64 KB      4.83%
+            SRAM:        2360 B         8 KB     28.81%
 Finished building target: Mock_MCU.axf
  
 Performing post-build steps
 arm-none-eabi-size "Mock_MCU.axf"; # arm-none-eabi-objcopy -v -O binary "Mock_MCU.axf" "Mock_MCU.bin" ; # checksum -p MKE16Z64xxx4 -d "Mock_MCU.bin";
    text	   data	    bss	    dec	    hex	filename
-   2880	      0	   1336	   4216	   1078	Mock_MCU.axf
+   3164	      0	   2360	   5524	   1594	Mock_MCU.axf
  
 
-00:36:29 Build Finished. 0 errors, 0 warnings. (took 954ms)
+14:57:27 Build Finished. 0 errors, 0 warnings. (took 498ms)
 

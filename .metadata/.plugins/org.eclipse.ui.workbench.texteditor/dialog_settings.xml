@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="SCG_FIRCDIV"/>
+		<item key="selection" value="PCC-&gt;CLKCFG[PCC_LPUART0_INDEX]"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="PCC-&gt;CLKCFG[PCC_LPUART0_INDEX]"/>
 			<item value="PCC_LPUART0_INDEX"/>
 			<item value="SCG_FIRCDIV"/>
 			<item value="SCG_FIR"/>
@@ -22,7 +23,6 @@
 			<item value="PCC"/>
 			<item value="PCC_CLKCFG_CGC_SHIFT"/>
 			<item value="PCC_CLKCFG_PR_SHIFT"/>
-			<item value="PCC_CLKCFG_CGC_MASK"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
