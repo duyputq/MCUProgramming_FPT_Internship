@@ -177,13 +177,11 @@ void pop_queue(){
 //ham xy ly chinh
 void LPUART0_IRQHandler(){
 	char data = LPUART0->DATA & 0xFF;
-
-	push_queue(data);
-
 	if(data != '\0'){
-		pop_queue();
+		push_queue(data);
 	}
 	//trong pop queue co handle queue roi
+	pop_queue();
 
 
 	//viet tiep tai day(chua xu ly delay, cac loi khac,...)
@@ -201,9 +199,5 @@ void delay()
 
 int main(void){
 	initUART0();
-    while (1) {
-        // Main loop does nothing, all tasks are handled in interrupts
-
-    }
 	return 0;
 }
