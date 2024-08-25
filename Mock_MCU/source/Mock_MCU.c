@@ -1,7 +1,7 @@
 #include <MKE16Z4.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "checkError.h"
+//#include "checkError.h"
 
 #define SystemCoreClock 48000000
 #define BaudRate_UART 9600
@@ -15,34 +15,56 @@ uint8_t pop_index = 0;
 uint8_t queue_element = 0;
 uint8_t error_check = 0;
 
-void initUART0(){
-	//cau hinh xung
-	PCC->CLKCFG[PCC_PORTB_INDEX] |= PCC_CLKCFG_CGC(1);
-	PORTB->PCR[0] |= PORT_PCR_MUX(2);
-	PORTB->PCR[1] |= PORT_PCR_MUX(2);
+//y nguyen ass5
+void initUART0()
+{
+    // Enable clock for UART module with 48 MHz
+    PCC->CLKCFG[PCC_LPUART0_INDEX] |= (1 << 25) | (1 << 24);
+    PCC->CLKCFG[PCC_LPUART0_INDEX] &= ~(1 << 26);
 
-	//cau hinh xung cho uart
-	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(3);
-	PCC->CLKCFG[PCC_LPUART0_INDEX] |= PCC_CLKCFG_PCS(1);
-	SCG->FIRCDIV |= SCG_FIRCDIV_FIRCDIV2(1);
+    // Enable Fast IRC Clock Divide 2
+    SCG->FIRCDIV |= 1 << 8;
+    SCG->FIRCDIV &= ~(0x03 << 9); // Clear bit 9 and 10
 
-	//cau hinh UART
-	LPUART0->CTRL &= ~(1<<19 | 1<< 18);
-	LPUART0->CTRL &= ~(1<<4);
-	LPUART0->CTRL &= ~(1<<29);
-	LPUART0->CTRL &= ~(1<<13);
+    // Enable Clock Gate Control
+    PCC->CLKCFG[PCC_LPUART0_INDEX] |= (1 << 30);
 
-	//cau hinh BAUD
-	LPUART0->BAUD |= 1<<17;
-	LPUART0->BAUD &= ~(0b1011 << 24);
-	LPUART0->BAUD = (LPUART0->BAUD &~(1<<2)) |
-	LPUART_BAUD_SBR(SystemCoreClock / (BaudRate_UART * 5));
+    // Enable clock for port B
+    PCC->CLKCFG[PCC_PORTB_INDEX] |= 1 << 30;
 
-	//Enable Receiver  Interrupt
-	LPUART0->CTRL |= 1<<21;
+    // Configure pin PB0 & PB1 as UART
+    PORTB->PCR[0] |= 1 << 9;
+    PORTB->PCR[0] &= ~(0x05 << 8); // 5 = 101 -> clear bit 8 and 10
 
-	NVIC_EnableIRQ(LPUART0_IRQn);
-	LPUART0->CTRL |= (1<<19 | 1<<18);
+    PORTB->PCR[1] |= 1 << 9;
+    PORTB->PCR[1] &= ~(0x05 << 8); // 5 = 101 -> clear bit 8 and 10
+
+    LPUART0->BAUD |= (1 << 17);
+
+    // Configure baudrate 9600 bps
+    LPUART0->BAUD &= ~(1 << 24);
+    LPUART0->BAUD &= ~(1 << 25);
+    LPUART0->BAUD &= ~(1 << 27);
+    LPUART0->BAUD |= (LPUART0->BAUD & ~(1 << 2)) | LPUART_BAUD_SBR(1000);
+
+    // 8 bit data
+    LPUART0->CTRL &= ~(1 << 4);
+
+    // Configure one stop bit
+    LPUART0->BAUD &= ~(1 << 13);
+
+    // No parity bit
+    LPUART0->CTRL &= ~(1 << 1);
+
+    // Enable interrupt
+    LPUART0->CTRL |= 1 << 21;
+    // Enable UART interrupt in NVIC
+    __NVIC_EnableIRQ(LPUART0_IRQn);
+
+    // Enable transmit
+    LPUART0->CTRL |= 1 << 19;
+    // Enable receive
+    LPUART0->CTRL |= 1 << 18;
 }
 
 void send_character(char character) {
@@ -52,9 +74,6 @@ void send_character(char character) {
 
 // Function to send a string of characters over UART
 void send_data(const char *str) {
-/*	for (uint8_t index = 0; index < length; index++) {
-        send_character(string[index]);
-    }*/
 	while(*str != '\0'){
 		send_character(*str++);
 	}
@@ -91,7 +110,7 @@ void push_queue(char data){
 }
 
 //ham xu ly cac dong trong queue (cac ham import trong checkError.h)
-void handle_queue(uint8_t* src){
+/*void handle_queue(uint8_t* src){
 	//check error
 	uint8_t exception;
 
@@ -130,7 +149,7 @@ void handle_queue(uint8_t* src){
 //		}
 //	}
 
-	/*Handle Exception*/
+	/*Handle Exception
 	switch (exception)
 	{
 	case 1:
@@ -160,14 +179,21 @@ void handle_queue(uint8_t* src){
 		send_data("Normal");
 		break;
 	}
-}
+}*/
 
 void pop_queue(){
 	if(queue_element > 0){
-		handle_queue(queue[pop_index]);
-		queue_element--;
+		// Thực hiện xử lý dữ liệu trong queue tại đây
+		// handle_queue(queue[pop_index]);
+
+		// Sau khi xử lý xong, xoá dữ liệu trong hàng đợi
 		clear(pop_index);
+
+		// Tăng chỉ số pop và giảm số lượng phần tử trong queue
+		queue_element--;
 		pop_index++;
+
+		// Reset lại pop_index nếu nó vượt quá 4 (tối đa 4 hàng đợi)
 		if(pop_index == 4){
 			pop_index = 0;
 		}
@@ -175,19 +201,18 @@ void pop_queue(){
 }
 
 //ham xy ly chinh
-void LPUART0_IRQHandler(){
-	char data = LPUART0->DATA & 0xFF;
+void LPUART0_IRQHandler() {
+    char data = LPUART0->DATA & 0xFF;
 
-	push_queue(data);
+    // Echo lại dữ liệu vừa nhận
+    send_character(data);
 
-	if(data != '\0'){
-		pop_queue();
-	}
-	//trong pop queue co handle queue roi
+    // Đưa dữ liệu vào hàng đợi
+    push_queue(data);
 
-
-	//viet tiep tai day(chua xu ly delay, cac loi khac,...)
-	//...
+    if (data == '\0') {
+        pop_queue();
+    }
 }
 
 void delay()
@@ -199,11 +224,17 @@ void delay()
     }
 }
 
-int main(void){
-	initUART0();
-    while (1) {
-        // Main loop does nothing, all tasks are handled in interrupts
+int main(void) {
+    initUART0();
 
+    while (1) {
+        if (queue_element > 0) {
+            pop_queue();
+        }
+
+        // Có thể thêm delay hoặc thực hiện các công việc khác nếu cần
+        delay();
     }
-	return 0;
+
+    return 0;
 }

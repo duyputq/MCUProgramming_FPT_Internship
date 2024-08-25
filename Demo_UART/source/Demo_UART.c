@@ -22,7 +22,6 @@ void init_UART()
 	// Configure pin PB0 & PB1 as UART
 	PORTB->PCR[0] |= 1 << 9;
 	PORTB->PCR[0] &= ~(0x05 << 8); // 5 = 101 -> clear bit 8 and 10
-
 	PORTB->PCR[1] |= 1 << 9;
 	PORTB->PCR[1] &= ~(0x05 << 8); // 5 = 101 -> clear bit 8 and 10
 

@@ -10,9 +10,10 @@
 
 void initLed();
 
+//ten ham fixed
 void Systick_Handler()
 {
-	FGPIOB->PTOR |= GREEN_LED_PIN ;
+	FGPIOB->PTOR |= GREEN_LED_PIN ;//bat tat led
 }
 
 void initLed()

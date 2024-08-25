@@ -1,63 +1,23 @@
-16:00:24 **** Incremental Build of configuration Debug for project Mock_MCU ****
+20:30:49 **** Incremental Build of configuration Debug for project Mock_MCU ****
 make -r -j8 all 
 Building file: ../source/Mock_MCU.c
 Invoking: MCU C Compiler
 arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Mock_MCU.d" -MT"source/Mock_MCU.o" -MT"source/Mock_MCU.d" -o "source/Mock_MCU.o" "../source/Mock_MCU.c"
-../source/Mock_MCU.c: In function 'handle_queue':
-../source/Mock_MCU.c:98:21: warning: pointer targets in passing argument 1 of 'check_S' differ in signedness [-Wpointer-sign]
-   98 |         if (check_S(src) == 0)
-      |                     ^~~
-      |                     |
-      |                     uint8_t * {aka unsigned char *}
-In file included from ../source/Mock_MCU.c:4:
-../source/checkError.h:21:23: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-   21 | uint8_t check_S(char* src);
-      |                 ~~~~~~^~~
-../source/Mock_MCU.c:102:35: warning: pointer targets in passing argument 1 of 'check_byte_count' differ in signedness [-Wpointer-sign]
-  102 |         else if (check_byte_count(src) == 0) {
-      |                                   ^~~
-      |                                   |
-      |                                   uint8_t * {aka unsigned char *}
-../source/checkError.h:22:32: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-   22 | uint8_t check_byte_count(char* src);
-      |                          ~~~~~~^~~
-../source/Mock_MCU.c:105:29: warning: pointer targets in passing argument 1 of 'check_hexa' differ in signedness [-Wpointer-sign]
-  105 |         else if (check_hexa(src) == 0) {
-      |                             ^~~
-      |                             |
-      |                             uint8_t * {aka unsigned char *}
-../source/checkError.h:23:26: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-   23 | uint8_t check_hexa(char* src);
-      |                    ~~~~~~^~~
-../source/Mock_MCU.c:118:28: warning: pointer targets in passing argument 1 of 'check_sum' differ in signedness [-Wpointer-sign]
-  118 |         else if (check_sum(src) == 0) {
-      |                            ^~~
-      |                            |
-      |                            uint8_t * {aka unsigned char *}
-../source/checkError.h:24:31: note: expected 'const char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-   24 | uint8_t check_sum(const char* src);
-      |                   ~~~~~~~~~~~~^~~
-../source/Mock_MCU.c: In function 'pop_queue':
-../source/Mock_MCU.c:167:35: warning: pointer targets in passing argument 1 of 'handle_queue' differ in signedness [-Wpointer-sign]
-  167 |                 handle_queue(queue[pop_index]);
-      |                              ~~~~~^~~~~~~~~~~
-      |                                   |
-      |                                   char *
-../source/Mock_MCU.c:94:28: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
-   94 | void handle_queue(uint8_t* src){
-      |                   ~~~~~~~~~^~~
+../source/Mock_MCU.c:146:9: warning: "/*" within comment [-Wcomment]
+  146 |         /*give priority to check record start*/
+      |          
 Finished building: ../source/Mock_MCU.c
  
 Building target: Mock_MCU.axf
 Invoking: MCU Linker
 arm-none-eabi-gcc -nostdlib -Xlinker -Map="Mock_MCU.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Mock_MCU_Debug.ld -o "Mock_MCU.axf" ./startup/startup_mke16z4.o  ./source/Mock_MCU.o ./source/checkError.o ./source/mtb.o  ./device/system_MKE16Z4.o   
 Memory region         Used Size  Region Size  %age Used
-   PROGRAM_FLASH:       11184 B        64 KB     17.07%
-            SRAM:        2376 B         8 KB     29.00%
+   PROGRAM_FLASH:        3464 B        64 KB      5.29%
+            SRAM:        2360 B         8 KB     28.81%
 Finished building target: Mock_MCU.axf
  
 Performing post-build steps
 arm-none-eabi-size "Mock_MCU.axf"; # arm-none-eabi-objcopy -v -O binary "Mock_MCU.axf" "Mock_MCU.bin" ; # checksum -p MKE16Z64xxx4 -d "Mock_MCU.bin";
    text	   data	    bss	    dec	    hex	filename
-  11176	      8	   2368	  13552	   34f0	Mock_MCU.axf
+   3464	      0	   2360	   5824	   16c0	Mock_MCU.axf
  

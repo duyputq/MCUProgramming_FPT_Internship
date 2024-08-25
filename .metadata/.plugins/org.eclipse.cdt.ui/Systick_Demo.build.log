@@ -1,4 +1,4 @@
-01:25:39 **** Incremental Build of configuration Debug for project Systick_Demo ****
+16:50:53 **** Incremental Build of configuration Debug for project Systick_Demo ****
 make -r -j8 all 
 Building file: ../source/Systick_Demo.c
 Invoking: MCU C Compiler
@@ -19,5 +19,5 @@ arm-none-eabi-size "Systick_Demo.axf"; # arm-none-eabi-objcopy -v -O binary "Sys
    2924	      0	   1336	   4260	   10a4	Systick_Demo.axf
  
 
-01:25:39 Build Finished. 0 errors, 0 warnings. (took 605ms)
+16:50:54 Build Finished. 0 errors, 0 warnings. (took 497ms)
 
