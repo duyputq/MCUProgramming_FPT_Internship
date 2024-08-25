@@ -202,7 +202,7 @@ uint8_t check_hexa(char* src) {
 
 // 	if (line == nearLastLine) {
 // 		int8_t sub[10];
-// 		get_address(src, sub);
+// 			(src, sub);
 // 		uint8_t len = strlen(sub);
 // 		uint32_t value = 0;
 // 		for (int i = 0; i < len;i++) {

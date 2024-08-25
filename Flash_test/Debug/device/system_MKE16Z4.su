@@ -1,3 +1,0 @@
-../device/system_MKE16Z4.c:69:6:SystemInit	8	static
-../device/system_MKE16Z4.c:92:6:SystemCoreClockUpdate	16	static
-../device/system_MKE16Z4.c:127:29:SystemInitHook	8	static

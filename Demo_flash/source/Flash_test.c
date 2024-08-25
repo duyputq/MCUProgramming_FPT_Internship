@@ -1,5 +1,6 @@
 #include <MKE16Z4.h>
 
+//xoa
 void Erase_Sector(uint32_t Address)
 {
 	// wait previous command finish
@@ -25,6 +26,7 @@ void Erase_Sector(uint32_t Address)
 
 }
 
+//write
 void Program_LongWord(uint32_t Address, uint8_t *Data)
 {
 	// wait previous command finish
@@ -58,4 +60,13 @@ void Program_LongWord(uint32_t Address, uint8_t *Data)
 uint32_t Read_Flash_Address(uint32_t Address)
 {
 	return *(volatile uint32_t *)Address;
+}
+
+int main (){
+
+	while(1){
+
+	}
+
+	return 0;
 }
