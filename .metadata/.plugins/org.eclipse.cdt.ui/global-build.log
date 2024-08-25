@@ -1,20 +1,42 @@
-00:09:09 **** Incremental Build of configuration Debug for project Demo_flash ****
-make -r -j8 all 
-Building file: ../source/Flash_test.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_flash\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_flash\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_flash\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Flash_test.d" -MT"source/Flash_test.o" -MT"source/Flash_test.d" -o "source/Flash_test.o" "../source/Flash_test.c"
-Finished building: ../source/Flash_test.c
+00:11:58 **** Clean-only build of configuration Debug for project Demo_Systick ****
+make -r -j8 clean 
+rm -rf ./startup/startup_mke16z4.d ./startup/startup_mke16z4.o
+rm -rf ./source/Systick_Demo.d ./source/Systick_Demo.o ./source/mtb.d ./source/mtb.o
+rm -rf ./device/system_MKE16Z4.d ./device/system_MKE16Z4.o
+rm -rf Systick_Demo.axf
  
-Building target: Demo_flash.axf
+00:11:58 **** Build of configuration Debug for project Demo_Systick ****
+make -r -j8 all 
+Building file: ../startup/startup_mke16z4.c
+Building file: ../source/Systick_Demo.c
+Building file: ../source/mtb.c
+Invoking: MCU C Compiler
+Building file: ../device/system_MKE16Z4.c
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../startup/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"startup/startup_mke16z4.d" -MT"startup/startup_mke16z4.o" -MT"startup/startup_mke16z4.d" -o "startup/startup_mke16z4.o" "../startup/startup_mke16z4.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Systick_Demo.d" -MT"source/Systick_Demo.o" -MT"source/Systick_Demo.d" -o "source/Systick_Demo.o" "../source/Systick_Demo.c"
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/mtb.d" -MT"source/mtb.o" -MT"source/mtb.d" -o "source/mtb.o" "../source/mtb.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Demo_Systick\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../device/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"device/system_MKE16Z4.d" -MT"device/system_MKE16Z4.o" -MT"device/system_MKE16Z4.d" -o "device/system_MKE16Z4.o" "../device/system_MKE16Z4.c"
+Finished building: ../source/mtb.c
+ 
+Finished building: ../startup/startup_mke16z4.c
+ 
+Finished building: ../source/Systick_Demo.c
+Finished building: ../device/system_MKE16Z4.c
+ 
+ 
+Building target: Demo_Systick.axf
 Invoking: MCU Linker
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="Demo_flash.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Flash_test_Debug.ld -o "Demo_flash.axf" ./startup/startup_mke16z4.o  ./source/Flash_test.o ./source/mtb.o  ./device/system_MKE16Z4.o   
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="Demo_Systick.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T "Demo_Systick_Debug.ld" -o "Demo_Systick.axf" ./startup/startup_mke16z4.o  ./source/Systick_Demo.o ./source/mtb.o  ./device/system_MKE16Z4.o   
 Memory region         Used Size  Region Size  %age Used
-   PROGRAM_FLASH:        2532 B        64 KB      3.86%
+   PROGRAM_FLASH:        2924 B        64 KB      4.46%
             SRAM:        1336 B         8 KB     16.31%
-Finished building target: Demo_flash.axf
+Finished building target: Demo_Systick.axf
  
 Performing post-build steps
-arm-none-eabi-size "Demo_flash.axf"; # arm-none-eabi-objcopy -v -O binary "Demo_flash.axf" "Demo_flash.bin" ; # checksum -p MKE16Z64xxx4 -d "Demo_flash.bin";
+arm-none-eabi-size "Demo_Systick.axf"; # arm-none-eabi-objcopy -v -O binary "Demo_Systick.axf" "Demo_Systick.bin" ; # checksum -p MKE16Z64xxx4 -d "Demo_Systick.bin";
    text	   data	    bss	    dec	    hex	filename
-   2532	      0	   1336	   3868	    f1c	Demo_flash.axf
+   2924	      0	   1336	   4260	   10a4	Demo_Systick.axf
  

@@ -3610,3 +3610,30 @@ java.lang.NullPointerException: Cannot invoke "org.eclipse.core.runtime.IPath.eq
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-08-26 00:08:31.786
 !MESSAGE Indexed 'Demo_flash' (4 sources, 15 headers) in 0.655 sec: 1,333 declarations; 2,082 references; 0 unresolved inclusions; 7 syntax errors; 28 unresolved names (0.81%)
+
+!ENTRY org.eclipse.core.resources 4 2 2024-08-26 00:11:49.405
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException: Cannot invoke "org.eclipse.core.runtime.IPath.equals(Object)" because the return value of "org.eclipse.core.resources.IFile.getLocation()" is null
+	at com.nxp.swtools.eclipse.McuxEclipseEarlyStartup.detectDeletedMexFile(McuxEclipseEarlyStartup.java:302)
+	at com.nxp.swtools.eclipse.McuxEclipseEarlyStartup.detectDeletedMexFile(McuxEclipseEarlyStartup.java:317)
+	at com.nxp.swtools.eclipse.McuxEclipseEarlyStartup.resourceChanged(McuxEclipseEarlyStartup.java:248)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:321)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:311)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:174)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:458)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:654)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.lambda$0(PerformChangeOperation.java:263)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2453)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2478)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:295)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:94)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:219)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2453)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2478)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:89)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-08-26 00:11:50.079
+!MESSAGE Indexed 'Demo_Systick' (4 sources, 16 headers) in 0.373 sec: 1,505 declarations; 2,120 references; 0 unresolved inclusions; 7 syntax errors; 28 unresolved names (0.77%)
