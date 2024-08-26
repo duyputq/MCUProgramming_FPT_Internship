@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="LPUART0_IRQ"/>
+		<item key="selection" value="check"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="check"/>
+			<item value="get_address"/>
 			<item value="LPUART0_IRQ"/>
 			<item value="LPUART0_"/>
 			<item value="LPUART0"/>
@@ -21,8 +23,6 @@
 			<item value="queue"/>
 			<item value="element_index"/>
 			<item value="HELLO_STRING"/>
-			<item value="received_char"/>
-			<item value="rx_buffer"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

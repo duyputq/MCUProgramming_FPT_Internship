@@ -3,6 +3,11 @@
 //xoa
 void Erase_Sector(uint32_t Address)
 {
+
+//check dieu kien dau vao
+	//tai sao? truoc cau lenh vao erase thi minh khong biet se co command khac
+	//co mot so ham khong can doi de hoan thanh
+	//cho nen phai while de bao ve an toan
 	// wait previous command finish
 	while (FTFA->FSTAT == 0x00);
 
@@ -12,7 +17,11 @@ void Erase_Sector(uint32_t Address)
 		FTFA->FSTAT = 0x30; // Clear 2 error flag
 	}
 
+//code chinh
+	//thanh ghi FCCOB co 12 bytes
 	// Erase all bytes in a program flash sector
+	// xoa tat ca byte trong flash sector
+	//follow the tai lieu, cai bang table 13-13 phan erase
 	FTFA->FCCOB0 = 0x09;  // command erase
 	FTFA->FCCOB1 = (Address >> 16) & 0xFF;
 	FTFA->FCCOB2 = (Address >> 8) & 0xFF;
@@ -27,6 +36,8 @@ void Erase_Sector(uint32_t Address)
 }
 
 //write
+//viet giong erase, quy trinh van the
+//sua command thoi
 void Program_LongWord(uint32_t Address, uint8_t *Data)
 {
 	// wait previous command finish
@@ -44,6 +55,7 @@ void Program_LongWord(uint32_t Address, uint8_t *Data)
 	FTFA->FCCOB2 = (Address >> 8) & 0xFF;
 	FTFA->FCCOB3 = (Address >> 0) & 0xFF;
 
+	//write data
 	FTFA->FCCOB4 = Data[0];
 	FTFA->FCCOB5 = Data[1];
 	FTFA->FCCOB6 = Data[2];

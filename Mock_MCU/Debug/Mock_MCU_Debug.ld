@@ -5,7 +5,7 @@
  * Generated linker script file for MKE16Z64xxx4
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.10.0 [Build 3148] [2024-07-03] on Aug 25, 2024, 8:30:49 PM
+ * MCUXpresso IDE v11.10.0 [Build 3148] [2024-07-03] on Aug 26, 2024, 5:07:54 PM
  */
 
 INCLUDE "Mock_MCU_Debug_library.ld"

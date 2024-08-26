@@ -1,26 +1,28 @@
-20:30:49 **** Incremental Build of configuration Debug for project Mock_MCU ****
+17:07:54 **** Incremental Build of configuration Debug for project Mock_MCU ****
 make -r -j8 all 
 Building file: ../source/Mock_MCU.c
+Building file: ../source/checkError.c
 Invoking: MCU C Compiler
 arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Mock_MCU.d" -MT"source/Mock_MCU.o" -MT"source/Mock_MCU.d" -o "source/Mock_MCU.o" "../source/Mock_MCU.c"
-../source/Mock_MCU.c:146:9: warning: "/*" within comment [-Wcomment]
-  146 |         /*give priority to check record start*/
-      |          
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Mock_MCU\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/checkError.d" -MT"source/checkError.o" -MT"source/checkError.d" -o "source/checkError.o" "../source/checkError.c"
+Finished building: ../source/checkError.c
+ 
 Finished building: ../source/Mock_MCU.c
  
 Building target: Mock_MCU.axf
 Invoking: MCU Linker
 arm-none-eabi-gcc -nostdlib -Xlinker -Map="Mock_MCU.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Mock_MCU_Debug.ld -o "Mock_MCU.axf" ./startup/startup_mke16z4.o  ./source/Mock_MCU.o ./source/checkError.o ./source/mtb.o  ./device/system_MKE16Z4.o   
 Memory region         Used Size  Region Size  %age Used
-   PROGRAM_FLASH:        3464 B        64 KB      5.29%
+   PROGRAM_FLASH:        4944 B        64 KB      7.54%
             SRAM:        2360 B         8 KB     28.81%
 Finished building target: Mock_MCU.axf
  
 Performing post-build steps
 arm-none-eabi-size "Mock_MCU.axf"; # arm-none-eabi-objcopy -v -O binary "Mock_MCU.axf" "Mock_MCU.bin" ; # checksum -p MKE16Z64xxx4 -d "Mock_MCU.bin";
    text	   data	    bss	    dec	    hex	filename
-   3464	      0	   2360	   5824	   16c0	Mock_MCU.axf
+   4944	      0	   2360	   7304	   1c88	Mock_MCU.axf
  
 
-20:30:51 Build Finished. 0 errors, 1 warnings. (took 2s.428ms)
+17:07:54 Build Finished. 0 errors, 0 warnings. (took 501ms)
 
