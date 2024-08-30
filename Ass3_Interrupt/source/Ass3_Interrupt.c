@@ -33,6 +33,7 @@ void initButton(void) {
 
 void initSysTick(void) {
     SysTick_Config(48000);
+
 }
 
 void initBlink(void) {

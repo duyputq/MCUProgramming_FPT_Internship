@@ -1,0 +1,5 @@
+"Task Aware Debugger for GDB" version 11.10.0 (202404041456)
+Copyright 2016-2023 NXP
+==================================
+16:45:12.566 INFO: [TadState] TAD state changed: NONE -> DEBUG_INIT_0 (SUSPENDED, SIGNAL)
+16:45:13.808 INFO: [TadModel] DSF session ID 26 has ended.

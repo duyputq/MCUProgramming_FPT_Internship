@@ -1,0 +1,6 @@
+../source/HAL/HAL_QUEUE.c:24:6:clear	32	static
+../source/HAL/HAL_QUEUE.c:33:6:clear_temp	16	static
+../source/HAL/HAL_QUEUE.c:42:6:push_queue	16	static
+../source/HAL/HAL_QUEUE.c:62:6:parse_queue	16	static
+../source/HAL/HAL_QUEUE.c:91:6:pop_queue	8	static
+../source/HAL/HAL_QUEUE.c:113:6:reset_queue	16	static

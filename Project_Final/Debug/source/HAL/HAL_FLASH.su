@@ -1,0 +1,2 @@
+../source/HAL/HAL_FLASH.c:10:6:HAL_Erase_Flash	8	static
+../source/HAL/HAL_FLASH.c:14:6:Write_to_Flash	432	static

@@ -75,10 +75,14 @@ uint32_t Read_Flash_Address(uint32_t Address)
 }
 
 int main (){
+	uint8_t data[4] = {0x01, 0x02, 0x03, 0x04};
+
+	Program_LongWord(0xA000,data);
 
 	while(1){
 
 	}
+
 
 	return 0;
 }

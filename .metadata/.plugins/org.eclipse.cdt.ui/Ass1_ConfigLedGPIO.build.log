@@ -1,23 +1,11 @@
-15:21:08 **** Incremental Build of configuration Debug for project Ass1_ConfigLedGPIO ****
+16:45:23 **** Incremental Build of configuration Debug for project Ass1_ConfigLedGPIO ****
 make -r -j8 all 
-Building file: ../source/Ass1_ConfigLedGPIO.c
-Invoking: MCU C Compiler
-arm-none-eabi-gcc -D__REDLIB__ -DCPU_MKE16Z64VLF4 -DCPU_MKE16Z64VLF4_cm0plus -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass1_ConfigLedGPIO\source" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass1_ConfigLedGPIO\device" -I"C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass1_ConfigLedGPIO\CMSIS" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -fno-builtin -fmerge-constants -fmacro-prefix-map="../source/"= -mcpu=cortex-m0plus -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"source/Ass1_ConfigLedGPIO.d" -MT"source/Ass1_ConfigLedGPIO.o" -MT"source/Ass1_ConfigLedGPIO.d" -o "source/Ass1_ConfigLedGPIO.o" "../source/Ass1_ConfigLedGPIO.c"
-Finished building: ../source/Ass1_ConfigLedGPIO.c
- 
-Building target: Ass1_ConfigLedGPIO.axf
-Invoking: MCU Linker
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="Ass1_ConfigLedGPIO.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m0plus -mthumb -T Ass1_ConfigLedGPIO_Debug.ld -o "Ass1_ConfigLedGPIO.axf" ./startup/startup_mke16z4.o  ./source/Ass1_ConfigLedGPIO.o ./source/mtb.o  ./device/system_MKE16Z4.o   
-Memory region         Used Size  Region Size  %age Used
-   PROGRAM_FLASH:        3100 B        64 KB      4.73%
-            SRAM:        1336 B         8 KB     16.31%
-Finished building target: Ass1_ConfigLedGPIO.axf
- 
+make[1]: Nothing to be done for 'main-build'.
 Performing post-build steps
 arm-none-eabi-size "Ass1_ConfigLedGPIO.axf"; # arm-none-eabi-objcopy -v -O binary "Ass1_ConfigLedGPIO.axf" "Ass1_ConfigLedGPIO.bin" ; # checksum -p MKE16Z64xxx4 -d "Ass1_ConfigLedGPIO.bin";
    text	   data	    bss	    dec	    hex	filename
    3100	      0	   1336	   4436	   1154	Ass1_ConfigLedGPIO.axf
  
 
-15:21:09 Build Finished. 0 errors, 0 warnings. (took 516ms)
+16:45:23 Build Finished. 0 errors, 0 warnings. (took 202ms)
 

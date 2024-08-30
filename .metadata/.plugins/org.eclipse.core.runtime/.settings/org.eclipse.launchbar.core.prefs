@@ -1,9 +1,13 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.launchbar.core.descriptorType.default\:Demo_Blink_led.axf,org.eclipse.launchbar.core.descriptorType.default\:Systick_Demo.axf,org.eclipse.launchbar.core.descriptorType.default\:Mock_MCU.axf
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:Demo_Blink_led.axf,org.eclipse.launchbar.core.descriptorType.default\:Systick_Demo.axf,org.eclipse.launchbar.core.descriptorType.default\:Mock_MCU.axf,org.eclipse.launchbar.core.descriptorType.default\:MCU_MOCK PE Debug
 eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:Ass1_ConfigLedGPIO\ LinkServer\ Debug/activeLaunchTarget=null\:---
+org.eclipse.launchbar.core.descriptorType.default\:Ass1_ConfigLedGPIO\ LinkServer\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:Demo_Blink_led.axf/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:Demo_Blink_led.axf/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:MCU_MOCK\ PE\ Debug/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:Mock_MCU.axf/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Mock_MCU.axf/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Systick_Demo.axf/activeLaunchMode=debug

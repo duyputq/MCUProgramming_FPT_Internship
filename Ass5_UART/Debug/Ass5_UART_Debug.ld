@@ -5,7 +5,7 @@
  * Generated linker script file for MKE16Z64xxx4
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.10.0 [Build 3148] [2024-07-03] on Aug 21, 2024, 11:52:17 PM
+ * MCUXpresso IDE v11.10.0 [Build 3148] [2024-07-03] on Aug 27, 2024, 3:35:28 PM
  */
 
 INCLUDE "Ass5_UART_Debug_library.ld"

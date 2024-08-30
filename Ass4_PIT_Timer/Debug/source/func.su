@@ -1,0 +1,5 @@
+C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass4_PIT_Timer\CMSIS/core_cm0plus.h:741:22:__NVIC_EnableIRQ	16	static
+../source/func.c:19:6:initLedgreen	8	static
+../source/func.c:33:6:initLedblue	8	static
+../source/func.c:46:6:initPIT	8	static
+../source/func.c:72:6:LPIT0_IRQHandler	8	static

@@ -1,0 +1,13 @@
+"Task Aware Debugger for GDB" version 11.10.0 (202404041456)
+Copyright 2016-2023 NXP
+==================================
+16:41:08.930 INFO: [ZephyrRTOS] .config file could not be read [C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass4_PIT_Timer\Debug\.config (The system cannot find the file specified)]
+16:41:08.930 INFO: [TadModel] DSF session ID 26 has started.
+16:41:13.123 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (RESUMED, USER_REQUEST)
+16:41:13.150 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (SUSPENDED, SIGNAL)
+16:41:13.809 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (RESUMED, USER_REQUEST)
+16:41:13.870 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+16:41:20.225 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+16:45:01.05 INFO: [ZephyrRTOS] .config file could not be read [C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Ass1_ConfigLedGPIO\Debug\.config (The system cannot find the file specified)]
+16:45:01.06 INFO: [TadModel] DSF session ID 27 has started.
+16:45:04.356 INFO: [TadModel] DSF session ID 27 has ended.

@@ -1,0 +1,5 @@
+C:\Users\Duy\Documents\MCUXpressoIDE_11.10.0_3148\workspace\Project_Final\CMSIS/core_cm0plus.h:741:22:__NVIC_EnableIRQ	16	static
+../source/DRIVER/DRIVER_UART.c:10:6:initUART0	8	static
+../source/DRIVER/DRIVER_UART.c:41:6:UART0_SendChar	16	static
+../source/DRIVER/DRIVER_UART.c:46:6:UART0_SendString	16	static
+../source/DRIVER/DRIVER_UART.c:52:6:LPUART0_IRQHandler	16	static

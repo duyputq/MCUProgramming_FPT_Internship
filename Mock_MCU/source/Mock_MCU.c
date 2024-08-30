@@ -4,12 +4,10 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <string.h>
-//#include "checkError.h"
 
 #define SystemCoreClock 48000000
 #define BaudRate_UART 9600
 #define DELAY_CNT (3000000)
-#define MAX_RECORDS 300
 
 // Global variables
 char queue[4][255];
@@ -80,62 +78,10 @@ void send_data(const char *str) {
     }
 }
 
-void Erase_Sector(uint32_t Address)
-{
-	// wait previous command finish
-	while (FTFA->FSTAT == 0x00);
-
-	// clear previous cmd error
-	if (FTFA->FSTAT != 0x80)
-	{
-		FTFA->FSTAT = 0x30; // Clear 2 error flag
-	}
-
-	// Erase all bytes in a program flash sector
-	FTFA->FCCOB0 = 0x09;  // command erase
-	FTFA->FCCOB1 = (Address >> 16) & 0xFF;
-	FTFA->FCCOB2 = (Address >> 8) & 0xFF;
-	FTFA->FCCOB3 = (Address >> 0) & 0xFF;
-
-	// run command
-	FTFA->FSTAT = 0x80;
-
-	// wait command finish
-	while (FTFA->FSTAT == 0x00);
-
+uint8_t check_S(char* src) {
+    return src[0] == 'S' ? 1 : 0;
 }
 
-void Program_LongWord(uint32_t Address, uint8_t *Data)
-{
-	// wait previous command finish
-	while (FTFA->FSTAT == 0x00);
-	while (!(FTFA->FSTAT & FTFA_FSTAT_CCIF_MASK));
-
-
-	// clear previous cmd error
-	if (FTFA->FSTAT != 0x80)
-	{
-		FTFA->FSTAT = 0x30; // Clear 2 error flag
-	}
-
-	// Flash 4 bytes in a program flash sector
-	FTFA->FCCOB0 = 0x06;  // command erase
-	FTFA->FCCOB1 = (Address >> 16) & 0xFF;
-	FTFA->FCCOB2 = (Address >> 8) & 0xFF;
-	FTFA->FCCOB3 = (Address >> 0) & 0xFF;
-
-	FTFA->FCCOB4 = Data[0];
-	FTFA->FCCOB5 = Data[1];
-	FTFA->FCCOB6 = Data[2];
-	FTFA->FCCOB7 = Data[3];
-
-	// run command
-	FTFA->FSTAT = 0x80;
-
-	// wait command finish
-	while (FTFA->FSTAT == 0x00);
-
-}
 /*** Queue handling ***/
 
 // Clear the specified queue row
@@ -166,81 +112,43 @@ void push_queue(char data) {
     }
 }
 
+void extract_address(const char* srecord, char* address) {
+    uint8_t addressLength = 4;
+    strncpy(address, srecord + 4, addressLength);
+    address[addressLength] = '\0'; // Null-terminate the string
+}
 
-// Function to extract and send address and data from S-record
+void extract_data(const char* srecord, char* data) {
+    uint8_t addressLength = 4;
+    uint8_t dataEnd = strlen(srecord) - 3; // Ignore checksum and newline
+    strncpy(data, srecord + 4 + addressLength, dataEnd - (4 + addressLength));
+    data[dataEnd - (4 + addressLength)] = '\0'; // Null-terminate the string
+}
+
+void send_address_and_data(const char* address, const char* data) {
+    send_data("Address: ");
+    send_data(address);
+    send_data(", Data: ");
+    send_data(data);
+    send_data("\n");
+}
 
 void extract_and_send_Srecord(const char* srecord) {
     uint8_t recordType = srecord[1];
-    uint8_t addressLength = 0;
 
-    // Determine address length based on record type
     if (recordType == '1') {
-        addressLength = 4;
-    } else if (recordType == '2') {
-        addressLength = 6;
-    } else if (recordType == '3') {
-        addressLength = 8;
-    } else {
-        // Unsupported record type
-        return;
+        char address[5] = {0};
+        char data[100] = {0};
+
+        extract_address(srecord, address);
+        extract_data(srecord, data);
+        send_address_and_data(address, data);
     }
-
-    // Convert address from string to integer
-    uint32_t address = 0;
-    for (uint8_t i = 4; i < 4 + addressLength; i++) {
-        address = (address << 4) | ((srecord[i] >= '0' && srecord[i] <= '9') ? (srecord[i] - '0') : (toupper(srecord[i]) - 'A' + 10));
-    }
-
-    // Length of data (excluding address, checksum, and newline characters)
-    uint8_t dataLength = strlen(srecord) - (4 + addressLength + 3); // Exclude address, checksum, and newline characters
-
-    // Prepare data to write
-    uint8_t data[256] = {0};
-    for (uint8_t i = 4 + addressLength; i < 4 + addressLength + dataLength; i++) {
-        uint8_t hexValue = (srecord[i] >= '0' && srecord[i] <= '9') ? (srecord[i] - '0') : (toupper(srecord[i]) - 'A' + 10);
-        if ((i - (4 + addressLength)) % 2 == 0) {
-            data[(i - (4 + addressLength)) / 2] = hexValue << 4;
-        } else {
-            data[(i - (4 + addressLength)) / 2] |= hexValue;
-        }
-    }
-
-    // Erase sector before programming
-    Erase_Sector(address);
-
-    // Program data into flash
-    for (uint8_t i = 0; i < dataLength / 4; i++) {
-        Program_LongWord(address + i * 4, data + i * 4);
-    }
-
-    // Handle remaining bytes if dataLength is not a multiple of 4
-    if (dataLength % 4 != 0) {
-        uint8_t remainingData[4] = {0};
-        memcpy(remainingData, data + (dataLength / 4) * 4, dataLength % 4);
-        Program_LongWord(address + (dataLength / 4) * 4, remainingData);
-    }
-}
-
-uint8_t check_S(char* src) {
-	uint8_t check;
-	if (src[0] == 'S') {
-		check = 1;
-	}
-	else {
-		check = 0;
-	}
-	return check;
 }
 
 // Process and pop data from queue
 void pop_queue() {
     if (queue_element > 0) {
-        // Check the first character of the line
-        if (check_S(queue[pop_index]) == 1) {
-            // Extract and write address and data to flash
-            extract_and_send_Srecord(queue[pop_index]);
-        }
-
         // Clear the processed line
         clear(pop_index);
 
@@ -256,12 +164,60 @@ void pop_queue() {
 }
 
 
+void Erase_Sector(uint32_t Address) {
+    // Wait for previous command to finish
+    while (FTFA->FSTAT == 0x00);
+
+    // Clear previous command error
+    if (FTFA->FSTAT != 0x80) {
+        FTFA->FSTAT = 0x30; // Clear 2 error flags
+    }
+
+    // Erase all bytes in a program flash sector
+    FTFA->FCCOB0 = 0x09;  // Erase sector command
+    FTFA->FCCOB1 = (Address >> 16) & 0xFF;
+    FTFA->FCCOB2 = (Address >> 8) & 0xFF;
+    FTFA->FCCOB3 = (Address >> 0) & 0xFF;
+
+    // Run command
+    FTFA->FSTAT = 0x80;
+
+    // Wait for command to finish
+    while (FTFA->FSTAT == 0x00);
+}
+
+void Program_LongWord(uint32_t Address, uint8_t *Data) {
+    // Wait for previous command to finish
+    while (FTFA->FSTAT == 0x00);
+
+    // Clear previous command error
+    if (FTFA->FSTAT != 0x80) {
+        FTFA->FSTAT = 0x30; // Clear 2 error flags
+    }
+
+    // Program 4 bytes in a program flash sector
+    FTFA->FCCOB0 = 0x06;  // Program longword command
+    FTFA->FCCOB1 = (Address >> 16) & 0xFF;
+    FTFA->FCCOB2 = (Address >> 8) & 0xFF;
+    FTFA->FCCOB3 = (Address >> 0) & 0xFF;
+
+    FTFA->FCCOB4 = Data[0];
+    FTFA->FCCOB5 = Data[1];
+    FTFA->FCCOB6 = Data[2];
+    FTFA->FCCOB7 = Data[3];
+
+    // Run command
+    FTFA->FSTAT = 0x80;
+
+    // Wait for command to finish
+    while (FTFA->FSTAT == 0x00);
+}
+
 void LPUART0_IRQHandler() {
     char data = LPUART0->DATA & 0xFF;
 
     // Check if data is not null (null character)
     if (data != '\0') {
-        // Push data to queue
         push_queue(data);
     }
 
@@ -279,14 +235,18 @@ int main(void) {
     initUART0();
 
     while (1) {
-        if (queue_element > 0) {
-            // Process queue in main loop
-            pop_queue();
+        // Pop queue in the main loop
+        pop_queue();
+
+        // Process the data from the queue if available
+        if (queue_element > 0 && check_S(queue[pop_index]) == 1) {
+            extract_and_send_Srecord(queue[pop_index]);
         }
 
-        // Add delay or perform other tasks if needed
-        //delay();
+        // Optional delay or other tasks
+        // delay();
     }
 
     return 0;
 }
+
